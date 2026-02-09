@@ -2,6 +2,9 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+// Calculator Script made by MasterSharp
+// GUI made by Itelcan3
+
 public class Calcolatrice extends JFrame implements ActionListener {
 
     JTextField display;
@@ -26,8 +29,8 @@ public class Calcolatrice extends JFrame implements ActionListener {
             "√", "x²", "/", "*",
             "7", "8", "9", "-",
             "4", "5", "6", "+",
-            "1", "2", "3", "#",
-            "C", "0", ".", "=" 
+            "1", "2", "3", ".",
+            "C", "0", "=", "#" 
         };
 
         for (String t : tasti) {
