@@ -1,4 +1,4 @@
-# Calcolatrice
+# Calcolatrice: Il mia prima app in Java
 La Calcolatrice più semplice per tutti gli studenti che ne necessitano. Open Source e programmata in Java
 
 # Updates
