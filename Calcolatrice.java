@@ -1,9 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.io.*;
 import javax.swing.*;
-
-// Calculator Script made by MasterSharp
-// GUI made by Itelcan3
 
 public class Calcolatrice extends JFrame implements ActionListener {
 
@@ -69,12 +67,10 @@ public class Calcolatrice extends JFrame implements ActionListener {
                 }
 
                 display.setText(String.valueOf(risultato));
-                operatore = ""; // reset operatore dopo =
+                operatore = "";
             } else if (!display.getText().isEmpty()) {
-                // Nessuna operazione: mostra lo stesso numero
                 display.setText(display.getText());
             } else {
-                // Nessun numero: mostra 0
                 display.setText("0");
             }
         } else if (comando.equals("C")) {
@@ -82,7 +78,6 @@ public class Calcolatrice extends JFrame implements ActionListener {
             num1 = 0;
             operatore = "";
         } 
-        // operazioni
         else if (comando.equals("√")) {
             if (!display.getText().isEmpty()) {
                 double valore = Double.parseDouble(display.getText());
@@ -98,20 +93,42 @@ public class Calcolatrice extends JFrame implements ActionListener {
                 display.setText(display.getText() + ".");
             }
         } 
-        // Bottone Appunti
         else if (comando.equals("#")) {
             apriAppunti();
         }
     }
 
-    // Appunti Temporanei
     private void apriAppunti() {
         JFrame finestraAppunti = new JFrame("Appunti");
         finestraAppunti.setSize(300, 400);
+
         JTextArea areaTesto = new JTextArea();
         areaTesto.setLineWrap(true);
-        areaTesto.setFont(new Font("Arial", Font.PLAIN, 20));
+        areaTesto.setFont(new Font("Arial", Font.PLAIN, 16));
         areaTesto.setWrapStyleWord(true);
+
+        File file = new File("appunti.txt");
+
+        if (file.exists()) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                areaTesto.read(reader, null);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+
+        finestraAppunti.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        finestraAppunti.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+                    areaTesto.write(writer);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
         finestraAppunti.add(new JScrollPane(areaTesto));
         finestraAppunti.setVisible(true);
     }
