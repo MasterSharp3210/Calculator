@@ -1,5 +1,8 @@
 # Calcolatrice: La mia prima app in Java
 La Calcolatrice più semplice per tutti gli studenti che ne necessitano. Open Source e programmata in Java
 
+# Compatibilità
+Richiede Java 8 o superiori per essere eseguito
+
 # Updates
 La calcolatrice non verrà quasi sicuramente mai aggiornata frquentemente a discrezione di ogni volta che mi servirà una nuova funzione...
